@@ -15,7 +15,7 @@ for D in $DIRS; do
 done 
 
 # The DB should be started after 50 seconds, tables might not be initialised yet
-sleep 50 
+sleep 50
 
 tmux new-window -c "$PWD/audit" ./audit
 tmux new-window -c "$PWD/quoteserver" ./quoteserver
@@ -23,5 +23,5 @@ tmux new-window -c "$PWD/webserver" ./webserver
 
 # Sleep a bit to wait for the servers to settle
 sleep 5
-tmux new-window -c "$PWD/transactionServer" ./transactionServer
+tmux new-window -c "$PWD/transactionServer" ./run.sh
 tmux new-window -c "$PWD/workload-generator" ./run.sh
