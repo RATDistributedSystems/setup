@@ -4,7 +4,7 @@
 cd ..
 
 # Start all the services in the prescribed order (Cassandra first)
-#tmux new-window -c "$PWD/../transactionServer/setup_cassandra_image" ./run.sh
+tmux new-window -c "$PWD/transactionServer/setup_cassandra_image" ./run.sh
 
 # Build all the servers
 DIRS="audit quoteserver transactionServer webserver workload-generator"
@@ -15,7 +15,7 @@ for D in $DIRS; do
 done 
 
 # The DB should be started after 50 seconds, tables might not be initialised yet
-#sleep 50 
+sleep 50 
 
 tmux new-window -c "$PWD/audit" ./audit
 tmux new-window -c "$PWD/quoteserver" ./quoteserver
