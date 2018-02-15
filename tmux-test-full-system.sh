@@ -4,7 +4,7 @@
 cd ..
 
 # Start all the services in the prescribed order (Cassandra first)
-tmux new-window -c "$PWD/transactionServer/setup_cassandra_image" ./run.sh
+tmux new-window -c "$PWD/utilities/ratdatabase/setup_cassandra_image" ./run.sh
 
 # Build all the servers
 DIRS="audit quoteserver transactionServer webserver workload-generator"

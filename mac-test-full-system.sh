@@ -19,7 +19,7 @@ function newtab() {
 cd ..
 
 # Start all the services in the prescribed order (Cassandra first)
-newtab "transactionServer/setup_cassandra_image" "./run.sh"
+newtab "utilities/ratdatabase/setup_cassandra_image" "./run.sh"
 
 # Build all the servers
 DIRS="audit quoteserver transactionServer webserver workload-generator"
