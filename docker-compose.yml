@@ -1,0 +1,28 @@
+version: '3'
+services:
+  transactiondb:
+    image: rattransactiondb
+
+  auditdb:
+    image: ratauditdb
+
+  redis:
+    image: redis
+
+  quote:
+    image: ratquote
+    env_file:
+      - .env
+
+  audit:
+    image: rataudit
+    env_file:
+      - .env
+
+  transaction:
+    image: rattransaction
+    env_file:
+      - .env
+    ports:
+      - "44441:44441"
+
