@@ -16,13 +16,16 @@ services:
 
   audit:
     image: rataudit
+    deploy:
+      replicas: 1
     env_file:
       - .env
 
   transaction:
     image: rattransaction
+    deploy:
+      replicas: 1
     env_file:
       - .env
     ports:
       - "44441:44441"
-
