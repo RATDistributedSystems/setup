@@ -6,26 +6,38 @@ services:
   auditdb:
     image: ratauditdb
 
+  triggerdb:
+    image: rattriggerdb
+
   redis:
     image: redis
-
-  quote:
-    image: ratquote
-    env_file:
-      - .env
 
   audit:
     image: rataudit
     deploy:
       replicas: 1
     env_file:
-      - .env
+      - variable.env
 
   transaction:
     image: rattransaction
     deploy:
       replicas: 1
     env_file:
-      - .env
+      - variable.env
     ports:
       - "44441:44441"
+
+  webserver:
+    image: ratwebserver
+    deploy:
+      replicas: 1
+    env_file:
+      - variable.env
+
+  trigger:
+    image: rattrigger
+    deploy:
+      replicas: 1
+    env_file:
+      - variable.env
