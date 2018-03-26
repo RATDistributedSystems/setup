@@ -1,0 +1,3 @@
+[submodule "compose/audit"]
+	path = compose/audit
+	url = git://github.com/RATDistributedSystems/audit.git
