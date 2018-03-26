@@ -1,3 +1,12 @@
 [submodule "compose/audit"]
 	path = compose/audit
 	url = git://github.com/RATDistributedSystems/audit.git
+[submodule "compose/triggerserver"]
+	path = compose/triggerserver
+	url = https://github.com/RATDistributedSystems/triggerserver.git
+[submodule "compose/transactionServer"]
+	path = compose/transactionServer
+	url = https://github.com/RATDistributedSystems/transactionServer.git
+[submodule "compose/webserver"]
+	path = compose/webserver
+	url = https://github.com/RATDistributedSystems/webserver.git
