@@ -21,9 +21,8 @@ NUM=0
 for d in $DOCK_DIR; do
     pushd $d
     NAME=$(basename $d)
-    #CGO_ENABLED=0 GOOS=linux go build -a --installsuffix cgo --ldflags="-s" -o  $NAME
+    CGO_ENABLED=0 GOOS=linux go build -a --installsuffix cgo --ldflags="-s" -o  $NAME
     ./setup_image.sh
-    echo $d
     NUM=$((NUM + 1))
     popd
 done
