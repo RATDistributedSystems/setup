@@ -2,18 +2,23 @@ version: '3'
 services:
   transactiondb:
     image: rattransactiondb
+    restart: on-failure
 
   auditdb:
     image: ratauditdb
+    restart: on-failure
 
   triggerdb:
     image: rattriggerdb
+    restart: on-failure
 
   redis:
     image: redis
+    restart: on-failure
 
   audit:
     image: rataudit
+    restart: on-failure
     deploy:
       replicas: 1
     env_file:
@@ -21,6 +26,7 @@ services:
 
   transaction:
     image: rattransaction
+    restart: on-failure
     deploy:
       replicas: 1
     env_file:
@@ -28,15 +34,9 @@ services:
     ports:
       - "44441:44441"
 
-  webserver:
-    image: ratwebserver
-    deploy:
-      replicas: 1
-    env_file:
-      - variable.env
-
   trigger:
     image: rattrigger
+    restart: on-failure
     deploy:
       replicas: 1
     env_file:

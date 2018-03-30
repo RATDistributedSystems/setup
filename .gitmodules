@@ -7,6 +7,3 @@
 [submodule "compose/transactionServer"]
 	path = compose/transactionServer
 	url = https://github.com/RATDistributedSystems/transactionServer.git
-[submodule "compose/webserver"]
-	path = compose/webserver
-	url = https://github.com/RATDistributedSystems/webserver.git

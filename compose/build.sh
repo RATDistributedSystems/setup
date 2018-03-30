@@ -36,10 +36,12 @@ cp ../variables.env ../docker-compose.yml deploy.sh ~/Documents/docker-images
 echo -e "\nFiles will be stored in $HOME/Documents/docker-images"
 
 DOCK_IMGS=$(docker images | head -$((NUM + 1)) | tail -$NUM | awk '{print $1}' | xargs echo -n)
-ext=".dock"
+ext=".docker"
 # Download them
 for img in $DOCK_IMGS; do
     docker save -o $HOME/Documents/docker-images/$img$ext $img
     echo "saving $img as $img$ext"
 done
 
+# Redis
+docker save -o $HOME/Documents/docker-images/redis.docker redis
