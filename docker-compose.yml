@@ -33,7 +33,7 @@ services:
     deploy:
       replicas: 1
     env_file:
-      - variable.env
+      - variables.env
 
   transaction:
     image: rattransaction
@@ -41,7 +41,7 @@ services:
     deploy:
       replicas: 1
     env_file:
-      - variable.env
+      - variables.env
     ports:
       - "44441:44441"
 
@@ -51,4 +51,4 @@ services:
     deploy:
       replicas: 1
     env_file:
-      - variable.env
+      - variables.env
