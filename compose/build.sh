@@ -43,5 +43,6 @@ for img in $DOCK_IMGS; do
     echo "saving $img as $img$ext"
 done
 
-# Redis
+# Other images
 docker save -o $HOME/Documents/docker-images/redis.docker redis
+docker save -o $HOME/Documents/docker-images/cassandra.docker cassandra

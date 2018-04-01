@@ -1,8 +1,19 @@
 version: '3'
 services:
-  transactiondb:
+  transactiondb-1:
     image: rattransactiondb
     restart: on-failure
+
+  transactiondb-2:
+    image: cassandra
+    deploy:
+      replicas: 2
+    entrypoint:
+      - "sh"
+      - "-c"
+      - "sleep 60 && /docker-entrypoint.sh cassandra -f"
+    environment:
+      - CASSANDRA_SEEDS=transactiondb-1
 
   auditdb:
     image: ratauditdb
