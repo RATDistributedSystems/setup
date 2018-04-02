@@ -7,7 +7,7 @@ services:
   transactiondb-2:
     image: cassandra
     deploy:
-      replicas: 2
+      replicas: 1
     entrypoint:
       - "sh"
       - "-c"
@@ -15,12 +15,19 @@ services:
     environment:
       - CASSANDRA_SEEDS=transactiondb-1
 
+    transactiondb-3:
+    image: cassandra
+    deploy:
+      replicas: 1
+    entrypoint:
+      - "sh"
+      - "-c"
+      - "sleep 90 && /docker-entrypoint.sh cassandra -f"
+    environment:
+      - CASSANDRA_SEEDS=transactiondb-1
+
   auditdb:
     image: ratauditdb
-    restart: on-failure
-
-  triggerdb:
-    image: rattriggerdb
     restart: on-failure
 
   redis:
@@ -39,11 +46,11 @@ services:
     image: rattransaction
     restart: on-failure
     deploy:
-      replicas: 1
+      replicas: 3
     env_file:
       - variables.env
     ports:
-      - "44441:44441"
+      - "44440:44440"
 
   trigger:
     image: rattrigger
