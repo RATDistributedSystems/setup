@@ -1,33 +1,7 @@
 version: '3'
 services:
-  transactiondb-1:
-    image: rattransactiondb:latest
-    environment:
-      - CASSANDRA_BROADCAST_ADDRESS=transactiondb-1
-
-  transactiondb-2:
-    image: cassandra
-    command: /bin/bash -c "sleep 60 && /docker-entrypoint.sh cassandra -f"
-    environment:
-      - CASSANDRA_SEEDS=transactiondb-1
-
-  transactiondb-2:
-    image: cassandra
-    command: /bin/bash -c "sleep 60 && /docker-entrypoint.sh cassandra -f"
-    environment:
-      - CASSANDRA_SEEDS=transactiondb-1
-
-  auditdb:
-    image: ratauditdb
-    restart: on-failure
-
-  redis:
-    image: redis
-    restart: on-failure
-
   audit:
     image: rataudit
-    restart: on-failure
     deploy:
       replicas: 1
     env_file:
@@ -35,21 +9,12 @@ services:
 
   transaction:
     image: rattransaction
-    restart: on-failure
     deploy:
       replicas: 3
     env_file:
       - variables.env
     ports:
       - "44440:44440"
-
-  trigger:
-    image: rattrigger
-    restart: on-failure
-    deploy:
-      replicas: 1
-    env_file:
-      - variables.env
 
 networks:
   ratnet:

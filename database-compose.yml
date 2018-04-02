@@ -1,0 +1,27 @@
+version: '3'
+services:
+  transactiondb-1:
+    image: rattransactiondb:latest
+    environment:
+      - CASSANDRA_BROADCAST_ADDRESS=transactiondb-1
+
+  transactiondb-2:
+    image: cassandra
+    command: /bin/bash -c "sleep 60 && /docker-entrypoint.sh cassandra -f"
+    environment:
+      - CASSANDRA_SEEDS=transactiondb-1
+
+  transactiondb-2:
+    image: cassandra
+    command: /bin/bash -c "sleep 90 && /docker-entrypoint.sh cassandra -f"
+    environment:
+      - CASSANDRA_SEEDS=transactiondb-1
+
+  auditdb:
+    image: rattransactiondb:latest
+
+  redis:
+    image: redis
+
+networks:
+  ratnet:
