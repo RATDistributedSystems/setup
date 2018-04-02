@@ -32,7 +32,7 @@ git submodule update --init
 
 # Save all the docker files in ~/Documents
 mkdir -p $HOME/Documents/docker-images
-cp ../variables.env ../docker-compose.yml ../database-compose.yml deploy.sh ~/Documents/docker-images
+cp ../variables.env ../docker-compose.yml ../database-compose.yml load.sh deploy.sh ~/Documents/docker-images
 echo -e "\nFiles will be stored in $HOME/Documents/docker-images"
 
 DOCK_IMGS=$(docker images | head -$((NUM + 1)) | tail -$NUM | awk '{print $1}' | xargs echo -n)

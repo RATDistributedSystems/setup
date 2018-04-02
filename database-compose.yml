@@ -6,13 +6,13 @@ services:
       - CASSANDRA_BROADCAST_ADDRESS=transactiondb-1
 
   transactiondb-2:
-    image: cassandra
+    image: ratslavedb
     command: /bin/bash -c "sleep 60 && /docker-entrypoint.sh cassandra -f"
     environment:
       - CASSANDRA_SEEDS=transactiondb-1
 
-  transactiondb-2:
-    image: cassandra
+  transactiondb-3:
+    image: ratslavedb
     command: /bin/bash -c "sleep 90 && /docker-entrypoint.sh cassandra -f"
     environment:
       - CASSANDRA_SEEDS=transactiondb-1
