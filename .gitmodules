@@ -4,3 +4,6 @@
 [submodule "compose/transactionServer"]
 	path = compose/transactionServer
 	url = https://github.com/RATDistributedSystems/transactionServer.git
+[submodule "compose/workload-generator"]
+	path = compose/workload-generator
+	url = https://git@github.com/RATDistributedSystems/workload-generator

@@ -6,6 +6,8 @@ services:
       replicas: 1
     env_file:
       - variables.env
+    networks:
+      - ratnet
 
   transaction:
     image: rattransaction
@@ -15,6 +17,8 @@ services:
       - variables.env
     ports:
       - "44440:44440"
+    networks:
+      - ratnet
 
 networks:
   ratnet:
