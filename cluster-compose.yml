@@ -1,0 +1,20 @@
+version: '3'
+services:
+  transactiondb-2:
+    image: ratslavedb
+    command: /bin/bash -c "sleep 1 && /docker-entrypoint.sh cassandra -f"
+    environment:
+      - CASSANDRA_SEEDS=transactiondb-1
+    networks:
+      - ratnet
+
+  transactiondb-3:
+    image: ratslavedb
+    command: /bin/bash -c "sleep 45 && /docker-entrypoint.sh cassandra -f"
+    environment:
+      - CASSANDRA_SEEDS=transactiondb-1
+    networks:
+      - ratnet
+
+networks:
+  ratnet:

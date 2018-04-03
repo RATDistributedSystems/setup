@@ -20,5 +20,10 @@ services:
     networks:
       - ratnet
 
+  workgen:
+    image: ratworkgen
+  networks:
+    - ratnet
+
 networks:
   ratnet:

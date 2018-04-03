@@ -1,0 +1,21 @@
+version: '3'
+services:
+  transactiondb-1:
+    image: rattransactiondb:latest
+    environment:
+      - CASSANDRA_BROADCAST_ADDRESS=transactiondb-1
+    networks:
+      - ratnet
+
+  auditdb:
+    image: rattransactiondb:latest
+    networks:
+      - ratnet
+
+  redis:
+    image: redis
+    networks:
+      - ratnet
+
+networks:
+  ratnet:
